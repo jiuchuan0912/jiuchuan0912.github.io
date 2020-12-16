@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Javascript 中的堆栈与类型 | 杂货间</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/切换.png">
+    <meta name="description" content="氿酒为川">
+    
+    <link rel="preload" href="/assets/css/0.styles.d1cf910c.css" as="style"><link rel="preload" href="/assets/js/app.8b5ca728.js" as="script"><link rel="preload" href="/assets/js/2.4dc91007.js" as="script"><link rel="preload" href="/assets/js/10.20cce740.js" as="script"><link rel="prefetch" href="/assets/js/11.2709e488.js"><link rel="prefetch" href="/assets/js/12.6f1cfb47.js"><link rel="prefetch" href="/assets/js/13.1b93949f.js"><link rel="prefetch" href="/assets/js/14.43716d93.js"><link rel="prefetch" href="/assets/js/3.a1c1db31.js"><link rel="prefetch" href="/assets/js/4.097d3106.js"><link rel="prefetch" href="/assets/js/5.a4e92a82.js"><link rel="prefetch" href="/assets/js/6.e380ca5d.js"><link rel="prefetch" href="/assets/js/7.42b765bd.js"><link rel="prefetch" href="/assets/js/8.b7bc063e.js"><link rel="prefetch" href="/assets/js/9.e958ba38.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d1cf910c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">杂货间</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  概述
+</a></div><div class="nav-item"><a href="/fs/" class="nav-link router-link-active">
+  前端感悟
+</a></div><div class="nav-item"><a href="/gamers/" class="nav-link">
+  游戏杂谈
+</a></div> <a href="https://github.com/jiuchuan0912/jiuchuan0912.github.io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  概述
+</a></div><div class="nav-item"><a href="/fs/" class="nav-link router-link-active">
+  前端感悟
+</a></div><div class="nav-item"><a href="/gamers/" class="nav-link">
+  游戏杂谈
+</a></div> <a href="https://github.com/jiuchuan0912/jiuchuan0912.github.io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>前端感悟</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/fs/BFC 创建和作用.html" class="sidebar-link">BFC 形成条件和应用</a></li><li><a href="/fs/CSS 动画.html" class="sidebar-link">CSS 动画</a></li><li><a href="/fs/内联元素与块级元素.html" class="sidebar-link">内联元素与块级元素</a></li><li><a href="/fs/Javascript 中的堆栈与类型.html" class="active sidebar-link">Javascript 中的堆栈与类型</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/fs/Javascript 中的堆栈与类型.html#原始类型" class="sidebar-link">原始类型</a></li><li class="sidebar-sub-header"><a href="/fs/Javascript 中的堆栈与类型.html#引用类型" class="sidebar-link">引用类型</a></li><li class="sidebar-sub-header"><a href="/fs/Javascript 中的堆栈与类型.html#堆栈关系与深浅拷贝" class="sidebar-link">堆栈关系与深浅拷贝</a></li></ul></li><li><a href="/fs/预渲染初探.html" class="sidebar-link">预渲染初探</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="类型、堆栈-与深浅拷贝"><a href="#类型、堆栈-与深浅拷贝" class="header-anchor">#</a> 类型、堆栈，与深浅拷贝</h1> <h2 id="原始类型"><a href="#原始类型" class="header-anchor">#</a> 原始类型</h2> <p>javascript的基本类型为5种:</p> <ul><li>Undefined</li> <li>Null</li> <li>Boolean</li> <li>Number</li> <li>String</li></ul> <p>String 类型的独特之处在于，它是唯一没有固定大小的原始类型。可以用字符串存储 0 或更多的 Unicode 字符，由 16 位整数表示</p> <h2 id="引用类型"><a href="#引用类型" class="header-anchor">#</a> 引用类型</h2> <p>引用类型通常叫做类（class），遇到引用值，所处理的就是对象。</p> <p>**注意：**从传统意义上来说，ECMAScript 并不真正具有类。事实上，除了说明不存在类，在 ECMA-262 中根本没有出现“类”这个词。ECMAScript 定义了“对象定义”，逻辑上等价于其他程序设计语言中的类。</p> <p>Javascript 中对象有：</p> <ul><li>Object 对象</li> <li>Boolean 对象</li> <li>Number 对象</li> <li>String 对象</li></ul> <h2 id="堆栈关系与深浅拷贝"><a href="#堆栈关系与深浅拷贝" class="header-anchor">#</a> 堆栈关系与深浅拷贝</h2> <h3 id="堆栈关系"><a href="#堆栈关系" class="header-anchor">#</a> 堆栈关系</h3> <p>原始类型数据直接按值存储在栈中，每种类型数据占用的内存空间大小是确定的，由系统自动分配和释放。</p> <p>引用类型数据存放在堆中，其地址指针存放在栈中</p> <p><img src="https://s1.ax1x.com/2020/10/26/BnYJ6U.png" alt=""></p> <h3 id="浅拷贝"><a href="#浅拷贝" class="header-anchor">#</a> 浅拷贝</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token keyword">var</span> arr2 <span class="token operator">=</span> arr1 <span class="token punctuation">;</span> 
+<span class="token keyword">var</span> str1 <span class="token operator">=</span> arr1<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//1,2,5,8</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//5</span>
+arr2<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">99</span><span class="token punctuation">;</span> 
+str1 <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//1,2,5,8,99</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//5</span>
+</code></pre></div><p>上述代码展示了传值与传址的区别，此种赋值方式也是浅拷贝，两者指向同一内存空间</p> <h3 id="深拷贝"><a href="#深拷贝" class="header-anchor">#</a> 深拷贝</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token keyword">var</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>arr1<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   arr2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>arr1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span><span class="token comment">//1,2,5,8</span>
+arr2<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">99</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span><span class="token comment">//1,2,5,8,99</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">)</span><span class="token comment">//1,2,5,8</span>
+</code></pre></div><p>arr1的每个基本类型的数据都遍历一遍，依次的赋值给arr2的对应字段。避免产生因为地址引用带来的问题。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">12/15/2020, 4:37:33 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/fs/内联元素与块级元素.html" class="prev">
+        内联元素与块级元素
+      </a></span> <span class="next"><a href="/fs/预渲染初探.html">
+        预渲染初探
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.8b5ca728.js" defer></script><script src="/assets/js/2.4dc91007.js" defer></script><script src="/assets/js/10.20cce740.js" defer></script>
+  </body>
+</html>
